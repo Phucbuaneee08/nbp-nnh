@@ -163,34 +163,19 @@
 
     <div id="loader">
         <div class="spinner"></div>
-        <div class="loader-text">Loading Memories</div>
+        <div class="loader-text">Đang tải kỉ niệm của chúng mình ...</div>
     </div>
 
     <div id="canvas-container"></div>
 
     <div id="ui-layer">
-        <h1>Merry Christmas</h1>
-        
-        <div class="controls-wrapper">
-            <div class="btn-group">
-                <label class="upload-btn">
-                    Select Folder
-                    <input type="file" id="folder-input" webkitdirectory directory multiple>
-                </label>
-                
-                <label class="upload-btn">
-                    Select Files
-                    <input type="file" id="file-input" multiple accept="image/*">
-                </label>
-            </div>
-            <div class="hint-text">Use "Select Folder" to load all photos at once</div>
-            <div class="hint-text" style="opacity: 0.7; font-size: 8px;">Or put photos in "./images/" (1.jpg - 30.jpg)</div>
-        </div>
+        <h1>NBP AND NNH 2025 - MERRY CHRISTMAS </h1>
+   
     </div>
 
     <div id="webcam-wrapper">
         <video id="webcam" autoplay playsinline></video>
-        <div id="debug-info">Initializing...</div>
+        <div id="debug-info">Cho anh xem bàn tay xinh đẹp của em nào...</div>
         <canvas id="webcam-preview" style="display:none;"></canvas>
     </div>
 
@@ -221,7 +206,7 @@
             
             preload: {
                 autoScanLocal: true,
-                scanCount: 20, 
+                scanCount: 48, 
                 images: [
                     'https://ibb.co/8g7dd5rx', 
                     'https://ibb.co/8g7dd5rx',
@@ -780,26 +765,34 @@
             }
         }
 
-        function setupEvents() {
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                composer.setSize(window.innerWidth, window.innerHeight);
-            });
-            
-            document.getElementById('file-input').addEventListener('change', handleImageUpload);
-            document.getElementById('folder-input').addEventListener('change', handleImageUpload);
-            
-            window.addEventListener('keydown', (e) => {
-                if (e.key.toLowerCase() === 'h') {
-                    const controls = document.querySelector('.controls-wrapper');
-                    if (controls) controls.classList.toggle('ui-hidden');
-                    const webcam = document.getElementById('webcam-wrapper');
-                    if(webcam) webcam.classList.toggle('ui-hidden');
-                }
-            });
-        }
+       function setupEvents() {
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    composer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  const fileInput = document.getElementById('file-input');
+  if (fileInput) {
+    fileInput.addEventListener('change', handleImageUpload);
+  }
+
+  const folderInput = document.getElementById('folder-input');
+  if (folderInput) {
+    folderInput.addEventListener('change', handleImageUpload);
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'h') {
+      const controls = document.querySelector('.controls-wrapper');
+      if (controls) controls.classList.toggle('ui-hidden');
+
+      const webcam = document.getElementById('webcam-wrapper');
+      if (webcam) webcam.classList.toggle('ui-hidden');
+    }
+  });
+}
 
         function animate() {
             requestAnimationFrame(animate);
