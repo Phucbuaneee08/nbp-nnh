@@ -687,10 +687,10 @@
                     const stream = await navigator.mediaDevices.getUserMedia(constraints);
                     video.srcObject = stream;
                     video.addEventListener("loadeddata", predictWebcam);
-                    debugInfo.innerText = "Webcam active. Show hand.";
+                    // debugInfo.innerText = "Webcam active. Show hand.";
                 } catch(e) {
                     console.warn("Webcam access denied or not available", e);
-                    debugInfo.innerText = "Camera error: " + e.message;
+                    // debugInfo.innerText = "Camera error: " + e.message;
                     document.getElementById('webcam-wrapper').style.display = 'none';
                 }
             }
@@ -739,7 +739,7 @@
                 const pinchRatio = pinchDist / handSize;
 
                 // 调试显示
-                debugInfo.innerText = `Size: ${handSize.toFixed(2)} | Ext: ${extensionRatio.toFixed(2)} | Pinch: ${pinchRatio.toFixed(2)} | Mode: ${STATE.mode}`;
+                // debugInfo.innerText = `Size: ${handSize.toFixed(2)} | Ext: ${extensionRatio.toFixed(2)} | Pinch: ${pinchRatio.toFixed(2)} | Mode: ${STATE.mode}`;
 
                 // 5. 状态判定优化
                 // 优先检查握拳 (Tree)，防止因为大拇指靠近食指而被误判为 Focus
@@ -761,7 +761,7 @@
                 }
             } else {
                 STATE.hand.detected = false;
-                debugInfo.innerText = "No hand detected";
+                // debugInfo.innerText = "Dơ tay em lên...";
             }
         }
 
